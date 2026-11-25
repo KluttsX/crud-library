@@ -38,8 +38,11 @@
                 <td>@book.Price.ToString("F2")</td>
                 <td>@book.Stock</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning btn-sm">
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning btn-sm mb-3">
                         Edit
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger btn-sm">
+                        Delete
                     </a>
                 </td>
             </tr>
