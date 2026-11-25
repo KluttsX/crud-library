@@ -43,5 +43,52 @@ namespace LibreriaDonJulio.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Book book)
+        {
+            if (id != book.Id)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(book);
+            }
+
+            var existingBook = await _context.Books.FindAsync(id);
+
+            if (existingBook == null)
+            {
+                return NotFound();
+            }
+
+            existingBook.Title = book.Title;
+            existingBook.Author = book.Author;
+            existingBook.Description = book.Description;
+            existingBook.CoverUrl = book.CoverUrl;
+            existingBook.Isbn = book.Isbn;
+            existingBook.Price = book.Price;
+            existingBook.Stock = book.Stock;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
