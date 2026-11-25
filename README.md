@@ -1,6 +1,6 @@
 # crud-library
 
-Aplicación web para la gestión de libros de una biblioteca, desarrollada con ASP.NET Core MVC y Entity Framework Core.
+Aplicación web para la gestión de libros de una biblioteca, desarrollada con ASP.NET Core MVC, Entity Framework Core y SQLite.
 
 ## Funcionalidades
 
@@ -12,8 +12,7 @@ Aplicación web para la gestión de libros de una biblioteca, desarrollada con A
 ## Requisitos
 
 - .NET SDK.
-- Visual Studio.
-- Base de datos configurada en `appsettings.json`.
+- Entity Framework Core CLI (`dotnet-ef`).
 
 ## Instalación y ejecución
 
@@ -35,18 +34,16 @@ Aplicación web para la gestión de libros de una biblioteca, desarrollada con A
    dotnet restore
    ```
 
-4. Configurar la cadena de conexión en `appsettings.json`.
-
-5. Aplicar las migraciones:
+4. Aplicar las migraciones:
 
    ```bash
    dotnet ef database update
    ```
 
-6. Ejecutar la aplicación:
+5. Ejecutar la aplicación:
 
    ```bash
    dotnet run
    ```
 
-7. Abrir en el navegador la URL indicada en la terminal.
+6. Abrir en el navegador la URL indicada en la terminal.
