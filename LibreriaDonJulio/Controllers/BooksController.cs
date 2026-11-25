@@ -1,5 +1,6 @@
 ﻿using LibreriaDonJulio.DataContext;
 using LibreriaDonJulio.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibreriaDonJulio.Controllers
@@ -11,6 +12,13 @@ namespace LibreriaDonJulio.Controllers
         public BooksController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var books = await _context.Books.ToListAsync();
+            return View(books);
         }
 
         [HttpGet]
@@ -33,7 +41,7 @@ namespace LibreriaDonJulio.Controllers
 
             TempData["Sucess"] = "Book Registered Successfully";
 
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(Index));
         }
     }
 }
