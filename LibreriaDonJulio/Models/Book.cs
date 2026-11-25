@@ -14,8 +14,10 @@ namespace LibreriaDonJulio.Models
         [Required]
         public string Isbn { get; set; } = string.Empty;
         [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "Price can't not be negative.")]
         public decimal Price { get; set; }
         [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Stock can't not be negative")]
         public int Stock { get; set; }
     }
 }
